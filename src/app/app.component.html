@@ -1,0 +1,153 @@
+<div class="search">
+  <form #form="ngForm" (submit)="onSubmit()">
+    <input type="text" placeholder="Search city" name="cityName" [(ngModel)] = "city">
+    <button name="submit">search</button>
+  </form>
+</div>
+
+<div class="container" *ngIf="weatherDetails">
+  <div class="upper-data">
+      <img src="../assets/clearsun.jpeg" *ngIf="weatherDetails.current.temp_c>22">
+      <img src="../assets/night.jpeg" *ngIf="weatherDetails.current.temp_c<=22">
+
+      <div class="weather-data">
+        <div class="location">{{weatherDetails.location.name}}</div>
+        <div class="temperature">{{weatherDetails.current.temp_c | number: '1.0-0'}} ºC</div>
+        <div class="time">{{weatherDetails.current.last_updated}}</div>
+      </div>
+  </div>
+  <div class="lower-data">
+    <div class="more-info-label">
+      More Information
+    </div>
+    <div class="more-info-container">
+      <div class="info-block">
+        <div class="info-block-label">
+          
+          <img src="../assets/min.png">
+          
+          <span>min</span>
+        </div>
+        <div class="info-block-value">
+          {{weatherDetails.forecast.forecastday[0].day.mintemp_c}} ºC
+        </div>
+      </div>
+
+      <div class="info-block">
+        <div class="info-block-label">
+          
+          <img src="../assets/max.jpeg">
+          
+          <span>max</span>
+        </div>
+        <div class="info-block-value">
+          {{weatherDetails.forecast.forecastday[0].day.maxtemp_c}} ºC
+        </div>
+      </div>
+
+      <div class="info-block">
+        <div class="info-block-label">
+          
+          <img src="../assets/humidity.jpeg">
+          
+          <span>humidity</span>
+        </div>
+        <div class="info-block-value">
+          {{weatherDetails.current.humidity}} %
+        </div>
+      </div>
+
+      <div class="info-block">
+        <div class="info-block-label">
+          
+          <img src="../assets/wind.jpg">
+          
+          <span>wind</span>
+        </div>
+        <div class="info-block-value">
+          {{weatherDetails.current.wind_kph}}  Km/h
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!--
+<div class="container">
+  <div class="upper-data">
+      <img src="../assets/clear sun.jpeg" *ngIf="14>15">
+      <img src="../assets/night.jpeg" *ngIf="14<=15">
+
+      <div class="weather-data">
+        <div class="location">Bangalore</div>
+        <div class="temperature">{{16.40 | number: '1.0-0'}} ºC</div>
+      </div>
+  </div>
+  <div class="lower-data">
+    <div class="more-info-label">
+      More Information
+    </div>
+    <div class="more-info-container">
+      <div class="info-block">
+        <div class="info-block-label">
+          
+          <img src="../assets/min.png">
+          
+          <span>min</span>
+        </div>
+        <div class="info-block-value">
+          10 ºC
+        </div>
+      </div>
+
+      <div class="info-block">
+        <div class="info-block-label">
+          
+          <img src="../assets/max.jpeg">
+          
+          <span>max</span>
+        </div>
+        <div class="info-block-value">
+          10 ºC
+        </div>
+      </div>
+
+      <div class="info-block">
+        <div class="info-block-label">
+          
+          <img src="../assets/humidity.jpeg">
+          
+          <span>humidity</span>
+        </div>
+        <div class="info-block-value">
+          76 %
+        </div>
+      </div>
+
+      <div class="info-block">
+        <div class="info-block-label">
+      
+          <img src="../assets/wind.jpg">
+          
+          <span>wind</span>
+        </div>
+        <div class="info-block-value">
+          11 Km/h
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+-->
+
+<router-outlet></router-outlet>
+
+
+
+
+
+<!--
+<app-weatherappcode></app-weatherappcode>
+-->
